@@ -8,28 +8,20 @@ import { ReactSortable } from 'react-sortablejs';
 import ChooseCountry from 'components/ChooseCountry';
 import { IconButton } from '@mui/material';
 import { listItemCss as listItemSx } from './styles';
+import generateSlots from 'utils/generateSlots';
 
 const CountriesChart = ({ countries, limit }) => {
   const [isOpen, setModal] = useState(false);
-
-  const getSlots = () => Array
-    .from({ length: limit })
-    .map((_, key) => ({ id: key }));
-
-  const [slots, setSlots] = useState(getSlots());
+  const [slots, setSlots] = useState(generateSlots(limit));
 
   return (
     <>
       <div>
         <Typography variant="body1" sx={{ mb: 2 }}>
-          Please select your top {limit} countries
+          Select your top {limit} countries
         </Typography>
 
-        <ReactSortable
-          component="ol"
-          setList={setSlots}
-          list={slots}
-        >
+        <ReactSortable component="ol" setList={setSlots} list={slots}>
           {slots.map((slot, index) => (
             <ListItem key={slot.id} sx={listItemSx}>
               {index + 1}
