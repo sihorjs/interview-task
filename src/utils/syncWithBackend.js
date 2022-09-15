@@ -1,3 +1,5 @@
+const SYNC_DELAY_MS = 1000;
+
 const syncWithBackend = (countries) => (
   new Promise((resolve) => {
     setTimeout(() => {
@@ -6,7 +8,7 @@ const syncWithBackend = (countries) => (
       console.log(countries, datetime);
 
       resolve(countries);
-    }, 3000)
+    }, SYNC_DELAY_MS)
   })
 );
 
