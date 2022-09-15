@@ -2,7 +2,6 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem'
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import AddIcon from '@mui/icons-material/Add';
 import { ReactSortable } from 'react-sortablejs';
 import ChooseCountry from 'components/ChooseCountry';
@@ -28,7 +27,6 @@ const CountriesChart = ({ countries, limit }) => {
               <IconButton onClick={() => setModal(true)}>
                 <AddIcon />
               </IconButton>
-              <DragIndicatorIcon />
             </ListItem>
           ))}
         </ReactSortable>
