@@ -1,4 +1,4 @@
-export const listItemCss = {
+export const listItemSx = {
   display: 'flex',
   justifyContent: 'space-between',
   minHeight: 50,

@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { ReactSortable } from 'react-sortablejs';
 import ChooseCountry from 'components/ChooseCountry';
 import { IconButton } from '@mui/material';
-import { listItemCss as listItemSx } from './styles';
+import { listItemSx } from './styles';
 import generateSlots from 'utils/generateSlots';
 
 const CountriesChart = ({ countries, limit }) => {
