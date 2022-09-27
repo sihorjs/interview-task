@@ -32,15 +32,17 @@ const CountriesChart = ({ countries, limit }) => {
   const handleReplaceCountry = (selectedCountry) => {
     const { id, country: countryToReplace } = selectedSlot;
 
-    setSlots((prevSlots) => (
-      prevSlots.map((slot) => (slot.id === id ? { ...slot, country: selectedCountry } : slot))
-    ));
-    setAvailableCountries((prevCountries) => {
-      const countriesWithoutChosenOne = prevCountries.filter(country => country !== selectedCountry);
-      const updatedAvailableCountries = [...countriesWithoutChosenOne, countryToReplace];
+    if (countryToReplace !== selectedCountry) {
+      setSlots((prevSlots) => (
+        prevSlots.map((slot) => (slot.id === id ? { ...slot, country: selectedCountry } : slot))
+      ));
+      setAvailableCountries((prevCountries) => {
+        const countriesWithoutChosenOne = prevCountries.filter(country => country !== selectedCountry);
+        const updatedAvailableCountries = [...countriesWithoutChosenOne, countryToReplace];
 
-      return updatedAvailableCountries.sort();
-    });
+        return updatedAvailableCountries.sort();
+      });
+    }
 
     handleCloseModal();
   };
