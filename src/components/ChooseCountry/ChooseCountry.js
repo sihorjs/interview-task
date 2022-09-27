@@ -20,8 +20,18 @@ const ChooseCountry = ({
     onChange(initialValue);
   }, [initialValue]);
 
+  const handleClose = () => {
+    onClose();
+    onChange('');
+  };
+
+  const handleSubmit = () => {
+    onSubmit(value);
+    onChange('');
+  };
+
   return (
-    <Dialog fullScreen open={isOpen} onClose={onClose}>
+    <Dialog fullScreen open={isOpen} onClose={handleClose}>
       <DialogTitle>Select a country</DialogTitle>
       <DialogContent>
         <NativeSelect value={value} onChange={e => onChange(e.target.value)}>
@@ -32,8 +42,8 @@ const ChooseCountry = ({
         </NativeSelect>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => onSubmit(value)} disabled={!value}>Select</Button>
-        <Button onClick={onClose}>Close</Button>
+        <Button onClick={handleSubmit} disabled={!value}>Select</Button>
+        <Button onClick={handleClose}>Close</Button>
       </DialogActions>
     </Dialog>
   );
