@@ -1,3 +1,3 @@
-const COUNTRIES_LIMIT = 7;
+const COUNTRIES_LIMIT = 20;
 
 export default COUNTRIES_LIMIT;
