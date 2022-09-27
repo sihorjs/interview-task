@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -6,18 +7,32 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import NativeSelect from '@mui/material/NativeSelect';
 
-const ChooseCountry = ({ isOpen, onClose, options }) => {
+const ChooseCountry = ({
+  isOpen,
+  onClose,
+  options,
+  onSubmit,
+  initialValue,
+}) => {
+  const [value, onChange] = useState(initialValue);
+
+  useEffect(() => {
+    onChange(initialValue);
+  }, [initialValue]);
+
   return (
     <Dialog fullScreen open={isOpen} onClose={onClose}>
       <DialogTitle>Select a country</DialogTitle>
       <DialogContent>
-        <NativeSelect>
+        <NativeSelect value={value} onChange={e => onChange(e.target.value)}>
+          <option disabled value="">Not set</option>
           {options.map((country) => (
             <option key={country}>{country}</option>
           ))}
         </NativeSelect>
       </DialogContent>
       <DialogActions>
+        <Button onClick={() => onSubmit(value)} disabled={!value}>Select</Button>
         <Button onClick={onClose}>Close</Button>
       </DialogActions>
     </Dialog>
@@ -27,6 +42,8 @@ const ChooseCountry = ({ isOpen, onClose, options }) => {
 ChooseCountry.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  initialValue: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
