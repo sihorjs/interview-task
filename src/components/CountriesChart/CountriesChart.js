@@ -72,7 +72,7 @@ const CountriesChart = ({ countries, limit }) => {
             <ListItem key={slot.id} sx={listItemSx}>
               {index + 1}
               {slot.country ? (
-                <Typography sx={filledSlotSx}>
+                <Typography variant="body1" sx={filledSlotSx}>
                   <span>
                     {slot.country}
                   </span>
